@@ -1,0 +1,5 @@
+{
+    "custom-md-pdf.outputDirectory": "sample",
+    "custom-md-pdf.markdown-it-include.enable": false,
+    "debug.node.autoAttach": "on"
+}

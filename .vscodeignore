@@ -1,0 +1,10 @@
+.vscode/**
+typings/**
+test/**
+.gitignore
+jsconfig.json
+*.vsix
+work/**
+*.bat
+.eslintrc.json
+sample/**

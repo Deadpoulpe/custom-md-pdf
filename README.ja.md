@@ -1,19 +1,17 @@
 # Markdown PDF
 
-This extension converts Markdown files to pdf, html, png or jpeg files.
+この拡張機能は Markdown ファイルを pdf、html、png、jpeg ファイルに変換します。
 
-[Japanese README](README.ja.md)
-
-## Table of Contents
+## 目次
 <!-- TOC depthFrom:2 depthTo:2 updateOnSave:false -->
 
-- [Features](#features)
-- [Install](#install)
-- [Usage](#usage)
-- [Extension Settings](#extension-settings)
-- [Options](#options)
+- [機能](#機能)
+- [インストール](#インストール)
+- [使い方](#使い方)
+- [拡張機能 設定](#拡張機能-設定)
+- [オプション](#オプション)
 - [FAQ](#faq)
-- [Known Issues](#known-issues)
+- [既知の問題](#既知の問題)
 - [Release Notes](#release-notes)
 - [License](#license)
 - [Special thanks](#special-thanks)
@@ -22,9 +20,9 @@ This extension converts Markdown files to pdf, html, png or jpeg files.
 
 <div class="page"/>
 
-## Features
+## 機能
 
-Supports the following features
+以下の機能をサポートしています。
 * [Syntax highlighting](https://highlightjs.org/static/demo/)
 * [emoji](https://www.webfx.com/tools/emoji-cheat-sheet/)
 * [markdown-it-checkbox](https://github.com/mcecot/markdown-it-checkbox)
@@ -34,7 +32,7 @@ Supports the following features
   * [markdown-it-plantuml](https://github.com/gmunguia/markdown-it-plantuml)
 * [mermaid](https://mermaid-js.github.io/mermaid/)
 
-Sample files
+サンプルファイル
  * [pdf](sample/README.pdf)
  * [html](sample/README.html)
  * [png](sample/README.png)
@@ -117,27 +115,26 @@ OUTPUT
 
 ![mermaid](images/mermaid.png)
 
-## Install
+## インストール
 
-Chromium download starts automatically when Markdown PDF is installed and Markdown file is first opened with Visual Studio Code.
+Markdown PDF をインストールして、Visual Studio Code で Markdownファイルを最初に開いた時、Chromium のダウンロードが自動で始まります。
 
-However, it is time-consuming depending on the environment because of its large size (~ 170Mb Mac, ~ 282Mb Linux, ~ 280Mb Win).
+しかしサイズが大きい為 (~170Mb Mac, ~282Mb Linux, ~280Mb Win) 、環境によっては時間がかかります。
+ダウンロード中は、ステータスバーに `Installing Puppeteer` のメッセージが表示されます。
 
-During downloading, the message `Installing Chromium` is displayed in the status bar.
+もしプロキシを使う必要がある場合、settings.json に `http.proxy` でプロキシを設定し、Visual Studio Code を再起動してください。
 
-If you are behind a proxy, set the `http.proxy` option to settings.json and restart Visual Studio Code.
-
-If the download is not successful or you want to avoid downloading every time you upgrade Markdown PDF, please specify the installed [Chrome](https://www.google.co.jp/chrome/) or 'Chromium' with [markdown-pdf.executablePath](#markdown-pdfexecutablepath) option.
+ダウンロードが上手くいかない場合や、Markdown PDF のバージョンアップの度にダウンロードするのを避けたい場合、[markdown-pdf.executablePath](#markdown-pdfexecutablepath) オプションでインストール済みの [Chrome](https://www.google.co.jp/chrome/) か Chromium を指定してください。
 
 <div class="page"/>
 
-## Usage
+## 使い方
 
-### Command Palette
+### コマンド パレット
 
-1. Open the Markdown file
-1. Press `F1` or `Ctrl+Shift+P`
-1. Type `export` and select below
+1. Markdown ファイルを開きます
+1. `F1` キーを押すか、`Ctrl+Shift+P` キーを入力します
+1. `export` と入力し以下を選択します
    * `markdown-pdf: Export (settings.json)`
    * `markdown-pdf: Export (pdf)`
    * `markdown-pdf: Export (html)`
@@ -147,10 +144,10 @@ If the download is not successful or you want to avoid downloading every time yo
 
 ![usage1](images/usage1.gif)
 
-### Menu
+### メニュー
 
-1. Open the Markdown file
-1. Right click and select below
+1. Markdown ファイルを開きます
+1. 右クリックして以下を選択します
    * `markdown-pdf: Export (settings.json)`
    * `markdown-pdf: Export (pdf)`
    * `markdown-pdf: Export (html)`
@@ -160,25 +157,25 @@ If the download is not successful or you want to avoid downloading every time yo
 
 ![usage2](images/usage2.gif)
 
-### Auto convert
+### 自動変換
 
-1. Add `"markdown-pdf.convertOnSave": true` option to **settings.json**
-1. Restart Visual Studio Code
-1. Open the Markdown file
-1. Auto convert on save
+1. **settings.json** に `"markdown-pdf.convertOnSave": true` オプションを追加します
+1. Visual Studio Code を再起動します
+1. Markdown ファイルを開きます
+1. 保存すると自動で変換されます
 
-## Extension Settings
+## 拡張機能 設定
 
 [Visual Studio Code User and Workspace Settings](https://code.visualstudio.com/docs/customization/userandworkspace)
 
-1. Select **File > Preferences > UserSettings or Workspace Settings**
-1. Find markdown-pdf settings in the **Default Settings**
-1. Copy `markdown-pdf.*` settings
-1. Paste to the **settings.json**, and change the value
+1. メニューから **ファイル > 基本設定 > ユーザー設定 か ワークスペース設定** を選択します
+1. **既定の設定** から markdown-pdf の設定を探します
+1. `markdown-pdf.*` の設定をコピーします
+1. **settings.json** に貼り付け、値を変更します
 
 ![demo](images/settings.gif)
 
-## Options
+## オプション
 
 ### List
 
@@ -226,8 +223,8 @@ If the download is not successful or you want to avoid downloading every time yo
 ### Save options
 
 #### `markdown-pdf.type`
-  - Output format: pdf, html, png, jpeg
-  - Multiple output formats support
+  - 出力フォーマット: pdf, html, png, jpeg
+  - 複数の出力フォーマットをサポート
   - Default: pdf
 
 ```javascript
@@ -240,12 +237,12 @@ If the download is not successful or you want to avoid downloading every time yo
 ```
 
 #### `markdown-pdf.convertOnSave`
-  - Enable Auto convert on save
+  - 保存時の自動変換を有効にします
   - boolean. Default: false
-  - To apply the settings, you need to restart Visual Studio Code
+  - 設定の反映には、Visutal Studio Code の再起動が必要です
 
 #### `markdown-pdf.convertOnSaveExclude`
-  - Excluded file name of convertOnSave option
+  - convertOnSave オプションの除外ファイル名を指定します
 
 ```javascript
 "markdown-pdf.convertOnSaveExclude": [
@@ -253,49 +250,48 @@ If the download is not successful or you want to avoid downloading every time yo
   "work.md$",
   "work|test",
   "[0-9][0-9][0-9][0-9]-work",
-  "work\\test"  // All '\' need to be written as '\\' (Windows)
+  "work\\test"  // 全ての \ は \\ と記述する必要があります。(Windows)
 ],
 ```
-
 #### `markdown-pdf.outputDirectory`
-  - Output Directory
-  - All `\` need to be written as `\\` (Windows)
+  - 出力ディレクトリを指定します
+  - 全ての `\` は `\\` と記述する必要があります (Windows)
 
 ```javascript
 "markdown-pdf.outputDirectory": "C:\\work\\output",
 ```
 
-  - Relative path
-    - If you open the `Markdown file`, it will be interpreted as a relative path from the file
-    - If you open a `folder`, it will be interpreted as a relative path from the root folder
-    - If you open the `workspace`, it will be interpreted as a relative path from the each root folder
-      - See [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces)
+  - 相対パス
+    - `Markdownファイル` を開いた場合、ファイルからの相対パスとして解釈されます
+    - `フォルダ` を開いた場合、ルートフォルダからの相対パスとして解釈されます
+    - `ワークスペース` を開いた場合、それぞれのルートフォルダからの相対パスとして解釈されます
+      - [マルチルート ワークスペース](https://code.visualstudio.com/docs/editor/multi-root-workspaces) を参照してください
 
 ```javascript
 "markdown-pdf.outputDirectory": "output",
 ```
 
-  - Relative path (home directory)
-    - If path starts with  `~`, it will be interpreted as a relative path from the home directory
+  - 相対パス (ホームディレクトリ)
+    - パスが `^` で始まっている場合、ホームディレクトリからの相対パスとして解釈されます
 
 ```javascript
 "markdown-pdf.outputDirectory": "~/output",
 ```
 
-  - If you set a directory with a `relative path`, it will be created if the directory does not exist
-  - If you set a directory with an `absolute path`, an error occurs if the directory does not exist
+  - `相対パス`でディレクトリを設定した場合、ディレクトリが存在しなければ作成されます
+  - `絶対パス`でディレクトリを設定した場合、ディレクトリが存在しなければエラーになります
 
 #### `markdown-pdf.outputDirectoryRelativePathFile`
-  - If `markdown-pdf.outputDirectoryRelativePathFile` option is set to `true`, the relative path set with [markdown-pdf.outputDirectory](#markdown-pdfoutputDirectory) is interpreted as relative from the file
-  - It can be used to avoid relative paths from folders and workspaces
+  - `markdown-pdf.outputDirectoryRelativePathFile` オプションが `true` に設定されている場合、[markdown-pdf.outputDirectory](#markdown-pdfoutputDirectory) で設定した相対パスは、ファイルからの相対パスとして解釈されます
+  - フォルダやワークスペースからの相対パスを避けたい場合に使うことが出来ます
   - boolean. Default: false
 
 ### Styles options
 
 #### `markdown-pdf.styles`
-  - A list of local paths to the stylesheets to use from the markdown-pdf
-  - If the file does not exist, it will be skipped
-  - All `\` need to be written as `\\` (Windows)
+  - markdown-pdf で使用するスタイルシートのパスを指定します
+  - ファイルが存在しない場合、スキップされます
+  - 全ての `\` は `\\` と記述する必要があります (Windows)
 
 ```javascript
 "markdown-pdf.styles": [
@@ -304,11 +300,11 @@ If the download is not successful or you want to avoid downloading every time yo
 ],
 ```
 
-  - Relative path
-    - If you open the `Markdown file`, it will be interpreted as a relative path from the file
-    - If you open a `folder`, it will be interpreted as a relative path from the root folder
-    - If you open the `workspace`, it will be interpreted as a relative path from the each root folder
-      - See [Multi-root Workspaces](https://code.visualstudio.com/docs/editor/multi-root-workspaces)
+  - 相対パス
+    - `Markdownファイル` を開いた場合、ファイルからの相対パスとして解釈されます
+    - `フォルダ` を開いた場合、ルートフォルダからの相対パスとして解釈されます
+    - `ワークスペース` を開いた場合、それぞれのルートフォルダからの相対パスとして解釈されます
+      - [マルチルート ワークスペース](https://code.visualstudio.com/docs/editor/multi-root-workspaces) を参照してください
 
 ```javascript
 "markdown-pdf.styles": [
@@ -316,8 +312,8 @@ If the download is not successful or you want to avoid downloading every time yo
 ],
 ```
 
-  - Relative path (home directory)
-    - If path starts with `~`, it will be interpreted as a relative path from the home directory
+  - 相対パス (ホームディレクトリ)
+    - パスが `^` で始まっている場合、ホームディレクトリからの相対パスとして解釈されます
 
 ```javascript
 "markdown-pdf.styles": [
@@ -325,7 +321,7 @@ If the download is not successful or you want to avoid downloading every time yo
 ],
 ```
 
-  - Online CSS (https://xxx/xxx.css) is applied correctly for JPG and PNG, but problems occur with PDF [#67](https://github.com/yzane/vscode-markdown-pdf/issues/67)
+  - オンラインCSS (https://xxx/xxx.css) は JPG と PNG では正しく適用されますが、PDF では問題が発生します [#67](https://github.com/yzane/vscode-markdown-pdf/issues/67)
 
 ```javascript
 "markdown-pdf.styles": [
@@ -334,25 +330,24 @@ If the download is not successful or you want to avoid downloading every time yo
 ```
 
 #### `markdown-pdf.stylesRelativePathFile`
-
-  - If `markdown-pdf.stylesRelativePathFile` option is set to `true`, the relative path set with [markdown-pdf.styles](#markdown-pdfstyles) is interpreted as relative from the file
-  - It can be used to avoid relative paths from folders and workspaces
+  - `markdown-pdf.stylesRelativePathFile` オプションが `true` に設定されている場合、[markdown-pdf.styles](#markdown-pdfstyles) で設定した相対パスは、ファイルからの相対パスとして解釈されます
+  - フォルダやワークスペースからの相対パスを避けたい場合に使うことが出来ます
   - boolean. Default: false
 
 #### `markdown-pdf.includeDefaultStyles`
-  - Enable the inclusion of default Markdown styles (VSCode, markdown-pdf)
+  - デフォルトのスタイルシート(VSCode, markdown-pdf)を有効にします
   - boolean. Default: true
 
 ### Syntax highlight options
 
 #### `markdown-pdf.highlight`
-  - Enable Syntax highlighting
+  - Syntax highlighting を有効にします
   - boolean. Default: true
 
 #### `markdown-pdf.highlightStyle`
-  - Set the style file name. for example: github.css, monokai.css ...
-  - [file name list](https://github.com/isagalaev/highlight.js/tree/master/src/styles)
-  - demo site : https://highlightjs.org/static/demo/
+  - スタイルシートのファイル名を指定します。例: github.css, monokai.css ...
+  - [ファイル名のリスト](https://github.com/isagalaev/highlight.js/tree/master/src/styles)
+  - [highlight.js demo](https://highlightjs.org/static/demo/)
 
 ```javascript
 "markdown-pdf.highlightStyle": "github.css",
@@ -361,21 +356,21 @@ If the download is not successful or you want to avoid downloading every time yo
 ### Markdown options
 
 #### `markdown-pdf.breaks`
-  - Enable line breaks
+  - 改行を有効にします
   - boolean. Default: false
 
 ### Emoji options
 
 #### `markdown-pdf.emoji`
-  - Enable emoji. [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
+  - 絵文字を有効にします [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
   - boolean. Default: true
 
 ### Configuration options
 
 #### `markdown-pdf.executablePath`
-  - Path to a Chromium or Chrome executable to run instead of the bundled Chromium
-  - All `\` need to be written as `\\` (Windows)
-  - To apply the settings, you need to restart Visual Studio Code
+  - バンドルされた Chromium の代わりに実行する Chromium または Chrome のパスを指定します
+  - 全ての `\` は `\\` と記述する必要があります (Windows)
+  - 設定の反映には、Visutal Studio Code の再起動が必要です
 
 ```javascript
 "markdown-pdf.executablePath": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
@@ -384,7 +379,7 @@ If the download is not successful or you want to avoid downloading every time yo
 ### Common Options
 
 #### `markdown-pdf.scale`
-  - Scale of the page rendering
+  - ページレンダリングのスケール
   - number. default: 1
 
 ```javascript
@@ -396,17 +391,16 @@ If the download is not successful or you want to avoid downloading every time yo
   - pdf only. [puppeteer page.pdf options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions)
 
 #### `markdown-pdf.displayHeaderFooter`
-  - Enable display header and footer
+  - ヘッダーとフッター表示を有効にします
   - boolean. Default: true
 
-#### `markdown-pdf.headerTemplate`
-#### `markdown-pdf.footerTemplate`
-  - HTML template for the print header and footer
-  - `<span class='date'></span>` : formatted print date
-  - `<span class='title'></span>` : markdown file name
-  - `<span class='url'></span>` : markdown full path name
-  - `<span class='pageNumber'></span>` : current page number
-  - `<span class='totalPages'></span>` : total pages in the document
+#### `markdown-pdf.headerTemplate`, `markdown-pdf.footerTemplate`
+  - ヘッダーとフッターを出力する為のHTMLテンプレートを指定します
+  - `<span class='date'></span>` : 日付
+  - `<span class='title'></span>` : Markdown ファイル名
+  - `<span class='url'></span>` : Markdown フルパスファイル名
+  - `<span class='pageNumber'></span>` : 現在のページ番号
+  - `<span class='totalPages'></span>` : ドキュメントの総ページ数
 
 ```javascript
 "markdown-pdf.headerTemplate": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
@@ -416,24 +410,24 @@ If the download is not successful or you want to avoid downloading every time yo
 ```
 
 #### `markdown-pdf.printBackground`
-  - Print background graphics
+  - 背景のグラフィックを出力
   - boolean. Default: true
 
 #### `markdown-pdf.orientation`
-  - Paper orientation
-  - portrait or landscape
+  - ページの向き
+  - portrait(縦向き) or landscape(横向き)
   - Default: portrait
 
 #### `markdown-pdf.pageRanges`
-  - Paper ranges to print, e.g., '1-5, 8, 11-13'
-  - Default: all pages
+  - 出力するページ範囲 例) '1-5, 8, 11-13'
+  - Default: 全ページ
 
 ```javascript
 "markdown-pdf.pageRanges": "1,4-",
 ```
 
 #### `markdown-pdf.format`
-  - Paper format
+  - 用紙のフォーマット
   - Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, A6
   - Default: A4
 
@@ -443,8 +437,8 @@ If the download is not successful or you want to avoid downloading every time yo
 
 #### `markdown-pdf.width`
 #### `markdown-pdf.height`
-  - Paper width / height, accepts values labeled with units(mm, cm, in, px)
-  - If it is set, it overrides the markdown-pdf.format option
+  - 用紙の幅/高さ、 単位(mm, cm, in, px)
+  - このオプションが指定されている場合、markdown-pdf.format オプションより優先されます
 
 ```javascript
 "markdown-pdf.width": "10cm",
@@ -455,7 +449,7 @@ If the download is not successful or you want to avoid downloading every time yo
 #### `markdown-pdf.margin.bottom`
 #### `markdown-pdf.margin.right`
 #### `markdown-pdf.margin.left`
-  - Paper margins.units(mm, cm, in, px)
+  - 用紙の余白、単位(mm, cm, in, px)
 
 ```javascript
 "markdown-pdf.margin.top": "1.5cm",
@@ -464,12 +458,12 @@ If the download is not successful or you want to avoid downloading every time yo
 "markdown-pdf.margin.left": "1cm",
 ```
 
-### PNG JPEG options
+### PNG, JPEG options
 
   - png and jpeg only. [puppeteer page.screenshot options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions)
 
 #### `markdown-pdf.quality`
-  - jpeg only. The quality of the image, between 0-100. Not applicable to png images
+  - jpeg only. イメージの品質を 0-100 の範囲で指定します。 png では無効です。
 
 ```javascript
 "markdown-pdf.quality": 100,
@@ -479,41 +473,41 @@ If the download is not successful or you want to avoid downloading every time yo
 #### `markdown-pdf.clip.y`
 #### `markdown-pdf.clip.width`
 #### `markdown-pdf.clip.height`
-  - An object which specifies clipping region of the page
+  - ページの切り抜き領域を指定します
   - number
 
 ```javascript
-//  x-coordinate of top-left corner of clip area
+// 切り抜き領域のX軸の基点を指定します。ページの左上が原点です。
 "markdown-pdf.clip.x": 0,
 
-// y-coordinate of top-left corner of clip area
+// 切り抜き領域のY軸の基点を指定します。ページの左上が原点です。
 "markdown-pdf.clip.y": 0,
 
-// width of clipping area
+// 切り抜き領域の幅を指定します
 "markdown-pdf.clip.width": 1000,
 
-// height of clipping area
+// 切り抜き領域の高さを指定します
 "markdown-pdf.clip.height": 1000,
 ```
 
 #### `markdown-pdf.omitBackground`
-  - Hides default white background and allows capturing screenshots with transparency
+  - デフォルトの白い背景ではなく、透過によるスクリーンショットのキャプチャーを有効にします
   - boolean. Default: false
 
 ### PlantUML options
 
 #### `markdown-pdf.plantumlOpenMarker`
-  - Oppening delimiter used for the plantuml parser.
+  - plantuml パーサーの開始区切り文字
   - Default: @startuml
 
 #### `markdown-pdf.plantumlCloseMarker`
-  - Closing delimiter used for the plantuml parser.
+  - plantuml パーサーの終了区切り文字
   - Default: @enduml
 
 #### `markdown-pdf.plantumlServer`
   - Plantuml server. e.g. http://localhost:8080
   - Default: http://www.plantuml.com/plantuml
-  - For example, to run Plantuml Server locally [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139) :
+  - 例えば、PlantUMLサーバをローカルで実行するには次のようにします [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139) :
     ```
     docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
     ```
@@ -522,7 +516,7 @@ If the download is not successful or you want to avoid downloading every time yo
 ### markdown-it-include options
 
 #### `markdown-pdf.markdown-it-include.enable`
-  - Enable markdown-it-include.
+  - markdown-it-include を有効にします
   - boolean. Default: true
 
 ### mermaid options
@@ -535,9 +529,9 @@ If the download is not successful or you want to avoid downloading every time yo
 
 ## FAQ
 
-### How can I change emoji size ?
+### 絵文字 サイズの変更方法は？
 
-1. Add the following to your stylesheet which was specified in the markdown-pdf.styles
+1. 以下の設定を markdown-pdf.styles で指定したスタイルシートに追加します。
 
 ```css
 .emoji {
@@ -545,28 +539,28 @@ If the download is not successful or you want to avoid downloading every time yo
 }
 ```
 
-### Auto guess encoding of files
+### 文字コードの自動判定
 
-Using `files.autoGuessEncoding` option of the Visual Studio Code is useful because it automatically guesses the character code. See [files.autoGuessEncoding](https://code.visualstudio.com/updates/v1_11#_auto-guess-encoding-of-files)
+Visual Studio Code の `files.autoGuessEncoding` オプションを使うと、文字コードが自動判定されるので便利です。
 
 ```javascript
 "files.autoGuessEncoding": true,
 ```
 
-### Output directory
+### 出力ディレクトリ
 
-If you always want to output to the relative path directory from the Markdown file.
+常に Markdown ファイルからの相対パスのディレクトリに出力したい場合。
 
-For example, to output to the "output" directory in the same directory as the Markdown file, set it as follows.
+例えば、Markdown ファイルと同じディレクトリの "output"ディレクトリに出力する場合、次のように設定してください。
 
 ```javascript
 "markdown-pdf.outputDirectory" : "output",
 "markdown-pdf.outputDirectoryRelativePathFile": true,
 ```
 
-### Page Break
+### 改ページ
 
-Please use the following to insert a page break.
+改ページを挿入するには、以下を使用してください。
 
 ``` html
 <div class="page"/>
@@ -574,15 +568,15 @@ Please use the following to insert a page break.
 
 <div class="page"/>
 
-## Known Issues
+## 既知の問題
 
 ### `markdown-pdf.styles` option
-* Online CSS (https://xxx/xxx.css) is applied correctly for JPG and PNG, but problems occur with PDF. [#67](https://github.com/yzane/vscode-markdown-pdf/issues/67)
+* オンラインCSS (https://xxx/xxx.css) は JPG と PNG では正しく適用されますが、PDF では問題が発生します [#67](https://github.com/yzane/vscode-markdown-pdf/issues/67)
 
 
 ## [Release Notes](CHANGELOG.md)
 
-### 1.4.4 (2020/03/19)
+## 1.4.4 (2020/03/19)
 * Change: mermaid javascript reads from URL instead of from local file
   * Add: `markdown-pdf.mermaidServer` option
   * add an option to disable mermaid [#175](https://github.com/yzane/vscode-markdown-pdf/issues/175)
