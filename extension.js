@@ -371,7 +371,7 @@ function exportPdf(data, filename, type, uri) {
   }
   if (!checkPuppeteerBinary()) {
     showErrorMessage('Chromium or Chrome does not exist! \
-      See https://github.com/yzane/vscode-custom-md-pdf#install');
+      See https://github.com/Deadpoulpe/custom-md-pdf.git#install');
     return;
   }
 
@@ -828,7 +828,7 @@ function installChromium() {
       vscode.window.setStatusBarMessage('$(markdown) ERROR: Failed to download Chromium!', StatusbarMessageTimeout);
       showErrorMessage('Failed to download Chromium! \
         If you are behind a proxy, set the http.proxy option to settings.json and restart Visual Studio Code. \
-        See https://github.com/yzane/vscode-custom-md-pdf#install', error);
+        See https://github.com/Deadpoulpe/custom-md-pdf.git#install', error);
     }
 
     function onProgress(downloadedBytes, totalBytes) {

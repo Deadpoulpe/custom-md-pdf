@@ -1,9 +1,9 @@
 {
   "name": "custom-md-pdf",
-  "displayName": "Markdown PDF",
+  "displayName": "Custom MD PDF",
   "description": "Convert Markdown to PDF",
   "version": "1.4.5",
-  "publisher": "yzane",
+  "publisher": "Deadpoulpe",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.0.0"
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yzane/vscode-custom-md-pdf.git"
+    "url": "https://github.com/Deadpoulpe/custom-md-pdf.git"
   },
   "activationEvents": [
     "onCommand:extension.custom-md-pdf.settings",
