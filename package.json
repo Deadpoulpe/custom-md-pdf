@@ -2,7 +2,7 @@
   "name": "custom-md-pdf",
   "displayName": "Custom MD PDF",
   "description": "Convert Markdown to PDF",
-  "version": "1.4.5",
+  "version": "2.0.0",
   "publisher": "Deadpoulpe",
   "icon": "images/icon.png",
   "engines": {
@@ -26,9 +26,6 @@
     "onCommand:extension.custom-md-pdf.settings",
     "onCommand:extension.custom-md-pdf.pdf",
     "onCommand:extension.custom-md-pdf.html",
-    "onCommand:extension.custom-md-pdf.png",
-    "onCommand:extension.custom-md-pdf.jpeg",
-    "onCommand:extension.custom-md-pdf.all",
     "onLanguage:markdown"
   ],
   "main": "./extension",
@@ -48,21 +45,6 @@
         "command": "extension.custom-md-pdf.html",
         "title": "Markdown PDF: Export (html)",
         "group": "custom-md-pdf"
-      },
-      {
-        "command": "extension.custom-md-pdf.png",
-        "title": "Markdown PDF: Export (png)",
-        "group": "custom-md-pdf"
-      },
-      {
-        "command": "extension.custom-md-pdf.jpeg",
-        "title": "Markdown PDF: Export (jpeg)",
-        "group": "custom-md-pdf"
-      },
-      {
-        "command": "extension.custom-md-pdf.all",
-        "title": "Markdown PDF: Export (all: pdf, html, png, jpeg)",
-        "group": "custom-md-pdf"
       }
     ],
     "menus": {
@@ -78,18 +60,6 @@
         {
           "when": "resourceLangId == markdown",
           "command": "extension.custom-md-pdf.html"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.png"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.jpeg"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.all"
         }
       ],
       "editor/context": [
@@ -107,27 +77,12 @@
           "when": "resourceLangId == markdown",
           "command": "extension.custom-md-pdf.html",
           "group": "custom-md-pdf@3"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.png",
-          "group": "custom-md-pdf@4"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.jpeg",
-          "group": "custom-md-pdf@5"
-        },
-        {
-          "when": "resourceLangId == markdown",
-          "command": "extension.custom-md-pdf.all",
-          "group": "custom-md-pdf@6"
         }
       ]
     },
     "configuration": {
       "type": "object",
-      "title": "Markdown PDF",
+      "title": "Custom MD PDF",
       "properties": {
         "custom-md-pdf.type": {
           "type": "array",
@@ -141,7 +96,7 @@
         },
         "custom-md-pdf.convertOnSave": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code"
         },
         "custom-md-pdf.convertOnSaveExclude": {
