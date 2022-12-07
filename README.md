@@ -1,8 +1,7 @@
 # Markdown PDF
 
-This extension converts Markdown files to pdf, html, png or jpeg files.
-
-[Japanese README](README.ja.md)
+Cette extension permet de convertir des fichiers Markdown ou HTML en fichier PDF / PNG / JPEG.
+Une fonctionnalité prévoit de faire des codes snippets de code HTML en PDF.
 
 ## Table of Contents
 <!-- TOC depthFrom:2 depthTo:2 updateOnSave:false -->
