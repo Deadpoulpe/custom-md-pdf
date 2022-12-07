@@ -3,41 +3,17 @@
 Cette extension permet de convertir des fichiers Markdown ou HTML en fichier PDF / PNG / JPEG.
 Une fonctionnalité prévoit de faire des codes snippets de code HTML en PDF.
 
-## Table of Contents
-<!-- TOC depthFrom:2 depthTo:2 updateOnSave:false -->
-
-- [Features](#features)
-- [Install](#install)
-- [Usage](#usage)
-- [Extension Settings](#extension-settings)
-- [Options](#options)
-- [FAQ](#faq)
-- [Known Issues](#known-issues)
-- [Release Notes](#release-notes)
-- [License](#license)
-- [Special thanks](#special-thanks)
-
-<!-- /TOC -->
-
 <div class="page"/>
 
 ## Features
 
-Supports the following features
+Modules utilisés dans cet extension :
 * [Syntax highlighting](https://highlightjs.org/static/demo/)
 * [emoji](https://www.webfx.com/tools/emoji-cheat-sheet/)
 * [markdown-it-checkbox](https://github.com/mcecot/markdown-it-checkbox)
 * [markdown-it-container](https://github.com/markdown-it/markdown-it-container)
 * [markdown-it-include](https://github.com/camelaissani/markdown-it-include)
-* [PlantUML](https://plantuml.com/)
-  * [markdown-it-plantuml](https://github.com/gmunguia/markdown-it-plantuml)
-* [mermaid](https://mermaid-js.github.io/mermaid/)
 
-Sample files
- * [pdf](sample/README.pdf)
- * [html](sample/README.html)
- * [png](sample/README.png)
- * [jpeg](sample/README.jpeg)
 
 ### markdown-it-container
 
@@ -54,20 +30,6 @@ OUTPUT
 <p><em>here be dragons</em></p>
 </div>
 ```
-
-### markdown-it-plantuml
-
-INPUT
-```
-@startuml
-Bob -[#red]> Alice : hello
-Alice -[#0000FF]->Bob : ok
-@enduml
-```
-
-OUTPUT
-
-![PlantUML](images/PlantUML.png)
 
 ### markdown-it-include
 
@@ -97,24 +59,6 @@ Content of plugins/README.md
 
 Content of CHANGELOG.md
 ```
-
-### mermaid
-
-INPUT
-<pre>
-```mermaid
-stateDiagram
-    [*] --> First
-    state First {
-        [*] --> second
-        second --> [*]
-    }
-```
-</pre>
-
-OUTPUT
-
-![mermaid](images/mermaid.png)
 
 ## Install
 
@@ -216,11 +160,7 @@ If the download is not successful or you want to avoid downloading every time yo
 ||[markdown-pdf.clip.width](#markdown-pdfclipwidth)| |
 ||[markdown-pdf.clip.height](#markdown-pdfclipheight)| |
 ||[markdown-pdf.omitBackground](#markdown-pdfomitbackground)| |
-|[PlantUML options](#plantuml-options)|[markdown-pdf.plantumlOpenMarker](#markdown-pdfplantumlopenmarker)| |
-||[markdown-pdf.plantumlCloseMarker](#markdown-pdfplantumlclosemarker)| |
-||[markdown-pdf.plantumlServer](#markdown-pdfplantumlserver)| |
 |[markdown-it-include options](#markdown-it-include-options)|[markdown-pdf.markdown-it-include.enable](#markdown-pdfmarkdown-it-includeenable)| |
-|[mermaid options](#mermaid-options)|[markdown-pdf.mermaidServer](#markdown-pdfmermaidserver)| |
 
 ### Save options
 
@@ -499,36 +439,11 @@ If the download is not successful or you want to avoid downloading every time yo
   - Hides default white background and allows capturing screenshots with transparency
   - boolean. Default: false
 
-### PlantUML options
-
-#### `markdown-pdf.plantumlOpenMarker`
-  - Oppening delimiter used for the plantuml parser.
-  - Default: @startuml
-
-#### `markdown-pdf.plantumlCloseMarker`
-  - Closing delimiter used for the plantuml parser.
-  - Default: @enduml
-
-#### `markdown-pdf.plantumlServer`
-  - Plantuml server. e.g. http://localhost:8080
-  - Default: http://www.plantuml.com/plantuml
-  - For example, to run Plantuml Server locally [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139) :
-    ```
-    docker run -d -p 8080:8080 plantuml/plantuml-server:jetty
-    ```
-    [plantuml/plantuml-server - Docker Hub](https://hub.docker.com/r/plantuml/plantuml-server/)
-
 ### markdown-it-include options
 
 #### `markdown-pdf.markdown-it-include.enable`
   - Enable markdown-it-include.
   - boolean. Default: true
-
-### mermaid options
-
-#### `markdown-pdf.mermaidServer`
-  - mermaid server
-  - Default: https://unpkg.com/mermaid/dist/mermaid.min.js
 
 <div class="page"/>
 
@@ -573,34 +488,6 @@ Please use the following to insert a page break.
 
 <div class="page"/>
 
-## Known Issues
-
-### `markdown-pdf.styles` option
-* Online CSS (https://xxx/xxx.css) is applied correctly for JPG and PNG, but problems occur with PDF. [#67](https://github.com/yzane/vscode-markdown-pdf/issues/67)
-
-
-## [Release Notes](CHANGELOG.md)
-
-### 1.4.4 (2020/03/19)
-* Change: mermaid javascript reads from URL instead of from local file
-  * Add: `markdown-pdf.mermaidServer` option
-  * add an option to disable mermaid [#175](https://github.com/yzane/vscode-markdown-pdf/issues/175)
-* Add: `markdown-pdf.plantumlServer` option
-  * support configuration of plantUML server [#139](https://github.com/yzane/vscode-markdown-pdf/issues/139)
-* Add: configuration scope
-  * extend setting 'headerTemplate' with scope\.\.\. [#184](https://github.com/yzane/vscode-markdown-pdf/pull/184)
-* Update: [slug](https://github.com/yzane/vscode-markdown-pdf/commit/3f4aeaa724999c46fc37423d4b188fd7ce72ffce) for markdown-it-named-headers
-* Update: markdown.css, markdown-pdf.css
-* Update: dependent packages
-* Fix: Fix for issue \#186 [#187](https://github.com/yzane/vscode-markdown-pdf/pull/187)
-* Fix: move the Meiryo font to the end of the font-family setting
-  * Meiryo font causing \\ to show as Â¥ [#83](https://github.com/yzane/vscode-markdown-pdf/issues/83)
-  * Backslash false encoded [#124](https://github.com/yzane/vscode-markdown-pdf/issues/124)
-  * Errors in which í•œê¸€\(korean word\) is not properly printed [#148](https://github.com/yzane/vscode-markdown-pdf/issues/148)
-* Fix: Improve the configuration schema of package.json
-    * Some settings can now be set from the settings editor.
-
-
 ## License
 
 MIT
@@ -617,9 +504,7 @@ MIT
 * [cheeriojs/cheerio](https://github.com/cheeriojs/cheerio)
 * [janl/mustache.js](https://github.com/janl/mustache.js)
 * [markdown-it/markdown-it-container](https://github.com/markdown-it/markdown-it-container)
-* [gmunguia/markdown-it-plantuml](https://github.com/gmunguia/markdown-it-plantuml)
 * [camelaissani/markdown-it-include](https://github.com/camelaissani/markdown-it-include)
-* [mermaid-js/mermaid](https://github.com/mermaid-js/mermaid)
 * [jonschlinkert/gray-matter](https://github.com/jonschlinkert/gray-matter)
 
 and

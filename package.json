@@ -15,9 +15,7 @@
   "keywords": [
     "markdown",
     "pdf",
-    "PlantUML",
     "export",
-    "mermaid",
     "multi-root ready"
   ],
   "repository": {
@@ -446,21 +444,6 @@
           "default": false,
           "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
         },
-        "custom-md-pdf.plantumlOpenMarker": {
-          "type": "string",
-          "default": "@startuml",
-          "description": "Oppening delimiter used for the plantuml parser."
-        },
-        "custom-md-pdf.plantumlCloseMarker": {
-          "type": "string",
-          "default": "@enduml",
-          "description": "Closing delimiter used for the plantuml parser."
-        },
-        "custom-md-pdf.plantumlServer": {
-          "type": "string",
-          "default": "http://www.plantuml.com/plantuml",
-          "description": "plantuml server"
-        },
         "custom-md-pdf.StatusbarMessageTimeout": {
           "type": "number",
           "default": 10000,
@@ -470,11 +453,6 @@
           "type": "boolean",
           "default": true,
           "description": "Enable markdown-it-include. "
-        },
-        "custom-md-pdf.mermaidServer": {
-          "type": "string",
-          "default": "https://unpkg.com/mermaid/dist/mermaid.min.js",
-          "description": "mermaid server."
         }
       }
     }
@@ -501,7 +479,6 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-include": "^1.1.0",
     "markdown-it-named-headers": "0.0.4",
-    "markdown-it-plantuml": "^1.4.1",
     "mkdirp": "^1.0.3",
     "mustache": "^4.0.1",
     "puppeteer-core": "^2.1.1",
