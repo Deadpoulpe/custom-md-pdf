@@ -1,4 +1,4 @@
-# Markdown PDF
+# Custom MD PDF
 
 Cette extension permet de convertir des fichiers Markdown ou HTML en fichier PDF / PNG / JPEG.
 Une fonctionnalité prévoit de faire des codes snippets de code HTML en PDF.
@@ -30,47 +30,6 @@ OUTPUT
 <p><em>here be dragons</em></p>
 </div>
 ```
-
-### markdown-it-include
-
-Include markdown fragment files: `:[alternate-text](relative-path-to-file.md)`.
-
-```
-├── [plugins]
-│  └── README.md
-├── CHANGELOG.md
-└── README.md
-```
-
-INPUT
-```
-README Content
-
-:[Plugins](./plugins/README.md)
-
-:[Changelog](CHANGELOG.md)
-```
-
-OUTPUT
-```
-Content of README.md
-
-Content of plugins/README.md
-
-Content of CHANGELOG.md
-```
-
-## Install
-
-Chromium download starts automatically when Markdown PDF is installed and Markdown file is first opened with Visual Studio Code.
-
-However, it is time-consuming depending on the environment because of its large size (~ 170Mb Mac, ~ 282Mb Linux, ~ 280Mb Win).
-
-During downloading, the message `Installing Chromium` is displayed in the status bar.
-
-If you are behind a proxy, set the `http.proxy` option to settings.json and restart Visual Studio Code.
-
-If the download is not successful or you want to avoid downloading every time you upgrade Markdown PDF, please specify the installed [Chrome](https://www.google.co.jp/chrome/) or 'Chromium' with [markdown-pdf.executablePath](#markdown-pdfexecutablepath) option.
 
 <div class="page"/>
 
@@ -129,7 +88,6 @@ If the download is not successful or you want to avoid downloading every time yo
 |:---|:---|:---|
 |[Save options](#save-options)|[markdown-pdf.type](#markdown-pdftype)| |
 ||[markdown-pdf.convertOnSave](#markdown-pdfconvertonsave)| |
-||[markdown-pdf.convertOnSaveExclude](#markdown-pdfconvertonsaveexclude)| |
 ||[markdown-pdf.outputDirectory](#markdown-pdfoutputdirectory)| |
 ||[markdown-pdf.outputDirectoryRelativePathFile](#markdown-pdfoutputdirectoryrelativepathfile)| |
 |[Styles options](#styles-options)|[markdown-pdf.styles](#markdown-pdfstyles)| |
@@ -139,27 +97,11 @@ If the download is not successful or you want to avoid downloading every time yo
 ||[markdown-pdf.highlightStyle](#markdown-pdfhighlightstyle)| |
 |[Markdown options](#markdown-options)|[markdown-pdf.breaks](#markdown-pdfbreaks)| |
 |[Emoji options](#emoji-options)|[markdown-pdf.emoji](#markdown-pdfemoji)| |
-|[Configuration options](#configuration-options)|[markdown-pdf.executablePath](#markdown-pdfexecutablepath)| |
 |[Common Options](#common-options)|[markdown-pdf.scale](#markdown-pdfscale)| |
 |[PDF options](#pdf-options)|[markdown-pdf.displayHeaderFooter](#markdown-pdfdisplayheaderfooter)|resource|
 ||[markdown-pdf.headerTemplate](#markdown-pdfheadertemplate)|resource|
 ||[markdown-pdf.footerTemplate](#markdown-pdffootertemplate)|resource|
 ||[markdown-pdf.printBackground](#markdown-pdfprintbackground)|resource|
-||[markdown-pdf.orientation](#markdown-pdforientation)|resource|
-||[markdown-pdf.pageRanges](#markdown-pdfpageranges)|resource|
-||[markdown-pdf.format](#markdown-pdfformat)|resource|
-||[markdown-pdf.width](#markdown-pdfwidth)|resource|
-||[markdown-pdf.height](#markdown-pdfheight)|resource|
-||[markdown-pdf.margin.top](#markdown-pdfmargintop)|resource|
-||[markdown-pdf.margin.bottom](#markdown-pdfmarginbottom)|resource|
-||[markdown-pdf.margin.right](#markdown-pdfmarginright)|resource|
-||[markdown-pdf.margin.left](#markdown-pdfmarginleft)|resource|
-|[PNG JPEG options](#png-jpeg-options)|[markdown-pdf.quality](#markdown-pdfquality)| |
-||[markdown-pdf.clip.x](#markdown-pdfclipx)| |
-||[markdown-pdf.clip.y](#markdown-pdfclipy)| |
-||[markdown-pdf.clip.width](#markdown-pdfclipwidth)| |
-||[markdown-pdf.clip.height](#markdown-pdfclipheight)| |
-||[markdown-pdf.omitBackground](#markdown-pdfomitbackground)| |
 |[markdown-it-include options](#markdown-it-include-options)|[markdown-pdf.markdown-it-include.enable](#markdown-pdfmarkdown-it-includeenable)| |
 
 ### Save options
@@ -182,19 +124,6 @@ If the download is not successful or you want to avoid downloading every time yo
   - Enable Auto convert on save
   - boolean. Default: false
   - To apply the settings, you need to restart Visual Studio Code
-
-#### `markdown-pdf.convertOnSaveExclude`
-  - Excluded file name of convertOnSave option
-
-```javascript
-"markdown-pdf.convertOnSaveExclude": [
-  "^work",
-  "work.md$",
-  "work|test",
-  "[0-9][0-9][0-9][0-9]-work",
-  "work\\test"  // All '\' need to be written as '\\' (Windows)
-],
-```
 
 #### `markdown-pdf.outputDirectory`
   - Output Directory
@@ -309,17 +238,6 @@ If the download is not successful or you want to avoid downloading every time yo
   - Enable emoji. [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
   - boolean. Default: true
 
-### Configuration options
-
-#### `markdown-pdf.executablePath`
-  - Path to a Chromium or Chrome executable to run instead of the bundled Chromium
-  - All `\` need to be written as `\\` (Windows)
-  - To apply the settings, you need to restart Visual Studio Code
-
-```javascript
-"markdown-pdf.executablePath": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-```
-
 ### Common Options
 
 #### `markdown-pdf.scale`
@@ -357,87 +275,6 @@ If the download is not successful or you want to avoid downloading every time yo
 #### `markdown-pdf.printBackground`
   - Print background graphics
   - boolean. Default: true
-
-#### `markdown-pdf.orientation`
-  - Paper orientation
-  - portrait or landscape
-  - Default: portrait
-
-#### `markdown-pdf.pageRanges`
-  - Paper ranges to print, e.g., '1-5, 8, 11-13'
-  - Default: all pages
-
-```javascript
-"markdown-pdf.pageRanges": "1,4-",
-```
-
-#### `markdown-pdf.format`
-  - Paper format
-  - Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, A6
-  - Default: A4
-
-```javascript
-"markdown-pdf.format": "A4",
-```
-
-#### `markdown-pdf.width`
-#### `markdown-pdf.height`
-  - Paper width / height, accepts values labeled with units(mm, cm, in, px)
-  - If it is set, it overrides the markdown-pdf.format option
-
-```javascript
-"markdown-pdf.width": "10cm",
-"markdown-pdf.height": "20cm",
-```
-
-#### `markdown-pdf.margin.top`
-#### `markdown-pdf.margin.bottom`
-#### `markdown-pdf.margin.right`
-#### `markdown-pdf.margin.left`
-  - Paper margins.units(mm, cm, in, px)
-
-```javascript
-"markdown-pdf.margin.top": "1.5cm",
-"markdown-pdf.margin.bottom": "1cm",
-"markdown-pdf.margin.right": "1cm",
-"markdown-pdf.margin.left": "1cm",
-```
-
-### PNG JPEG options
-
-  - png and jpeg only. [puppeteer page.screenshot options](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions)
-
-#### `markdown-pdf.quality`
-  - jpeg only. The quality of the image, between 0-100. Not applicable to png images
-
-```javascript
-"markdown-pdf.quality": 100,
-```
-
-#### `markdown-pdf.clip.x`
-#### `markdown-pdf.clip.y`
-#### `markdown-pdf.clip.width`
-#### `markdown-pdf.clip.height`
-  - An object which specifies clipping region of the page
-  - number
-
-```javascript
-//  x-coordinate of top-left corner of clip area
-"markdown-pdf.clip.x": 0,
-
-// y-coordinate of top-left corner of clip area
-"markdown-pdf.clip.y": 0,
-
-// width of clipping area
-"markdown-pdf.clip.width": 1000,
-
-// height of clipping area
-"markdown-pdf.clip.height": 1000,
-```
-
-#### `markdown-pdf.omitBackground`
-  - Hides default white background and allows capturing screenshots with transparency
-  - boolean. Default: false
 
 ### markdown-it-include options
 

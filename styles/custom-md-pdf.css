@@ -1,8 +1,11 @@
 /*
- * Markdown PDF CSS
+ * Custom MD PDF CSS
  */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
 
- body {
+ }
+body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
 	padding: 0 12px;
 }

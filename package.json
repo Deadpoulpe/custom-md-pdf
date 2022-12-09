@@ -2,7 +2,7 @@
   "name": "custom-md-pdf",
   "displayName": "Custom MD PDF",
   "description": "Convert Markdown to PDF",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "publisher": "Deadpoulpe",
   "icon": "images/icon.png",
   "engines": {
@@ -33,17 +33,17 @@
     "commands": [
       {
         "command": "extension.custom-md-pdf.settings",
-        "title": "Markdown PDF: Export (settings.json)",
+        "title": "Custom MD PDF: Export (settings.json)",
         "group": "custom-md-pdf"
       },
       {
         "command": "extension.custom-md-pdf.pdf",
-        "title": "Markdown PDF: Export (pdf)",
+        "title": "Custom MD PDF: Export (pdf)",
         "group": "custom-md-pdf"
       },
       {
         "command": "extension.custom-md-pdf.html",
-        "title": "Markdown PDF: Export (html)",
+        "title": "Custom MD PDF: Export (html)",
         "group": "custom-md-pdf"
       }
     ],
@@ -92,20 +92,12 @@
           "items": {
             "type": "string"
           },
-          "description": "Output format: pdf, html, png, jpeg. Multiple output formats support"
+          "description": "Output format: pdf, html. Multiple output formats support"
         },
         "custom-md-pdf.convertOnSave": {
           "type": "boolean",
           "default": true,
           "description": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code"
-        },
-        "custom-md-pdf.convertOnSaveExclude": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
-          },
-          "description": "Excluded file name of convertOnSave option"
         },
         "custom-md-pdf.outputDirectory": {
           "type": "string",
@@ -114,12 +106,15 @@
         },
         "custom-md-pdf.outputDirectoryRelativePathFile": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "If custom-md-pdf.outputDirectoryRelativePathFile option is set to true, the relative path set with custom-md-pdf.styles is interpreted as relative from the file"
         },
         "custom-md-pdf.styles": {
           "type": "array",
-          "default": [],
+          "default": [
+            "R:\\2.Travail\\1.Enseignement\\Cours\\_1.Outils\\2.Developpement\\1.SCSS\\main.css",
+            "D:\\rdaros\\Cours\\_1.Outils\\2.Developpement\\1.SCSS\\main.css"
+          ],
           "items": {
             "type": "string"
           },
@@ -244,18 +239,13 @@
         },
         "custom-md-pdf.breaks": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Enable line breaks"
         },
         "custom-md-pdf.emoji": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Enable emoji. [Emoji cheat sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)"
-        },
-        "custom-md-pdf.executablePath": {
-          "type": "string",
-          "default": "",
-          "description": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
         },
         "custom-md-pdf.scale": {
           "type": "number",
@@ -269,14 +259,14 @@
           "scope": "resource"
         },
         "custom-md-pdf.headerTemplate": {
-          "type": "string",
-          "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
+ 
+          "default": "<div style=\"font-size: 9px; margin-left: 100cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \"> <span class='date'></span></div>",
           "description": "pdf only. HTML template for the print header.",
           "scope": "resource"
         },
         "custom-md-pdf.footerTemplate": {
           "type": "string",
-          "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
+          "default": "<div style=\"z-index:5;font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif, 'Meiryo';font-size: 9px;letter-spacing: 0.06em; margin-left: 0.75cm;width:540px;\"><div style=\"margin-bottom: -5px;border-top: 1px solid #000000;padding-top: 10px; justify-content:space-between; display:flex;\"><span>PROFESSEUR : M.DA ROS</span><span>BTS SIO BORDEAUX - LYCÉE GUSTAVE EIFFEL</span></div><div style=\"justify-content:center; display:flex;\"><div style=\"font-size: 9px;\">&#10022; <span class='pageNumber'></span> / <span class='totalPages'></span> &#10022;</div></div></div>",
           "description": "pdf only. HTML template for the print footer.",
           "scope": "resource"
         },
@@ -285,119 +275,6 @@
           "default": true,
           "description": "pdf only. Print background graphics.",
           "scope": "resource"
-        },
-        "custom-md-pdf.orientation": {
-          "type": "string",
-          "enum": [
-            "portrait",
-            "landscape"
-          ],
-          "default": "portrait",
-          "description": "pdf only. Paper orientation. portrait or landscape.",
-          "scope": "resource"
-        },
-        "custom-md-pdf.pageRanges": {
-          "type": "string",
-          "default": "",
-          "description": "pdf only. Paper ranges to print, e.g., '1-5, 8, 11-13'.",
-          "scope": "resource"
-        },
-        "custom-md-pdf.format": {
-          "type": "string",
-          "enum": [
-            "Letter",
-            "Legal",
-            "Tabloid",
-            "Ledger",
-            "A0",
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6"
-          ],
-          "default": "A4",
-          "description": "pdf only. Paper format [Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, A6].",
-          "scope": "resource"
-        },
-        "custom-md-pdf.width": {
-          "type": "string",
-          "default": "",
-          "description": "pdf only. Paper width, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the custom-md-pdf.format option.",
-          "scope": "resource"
-        },
-        "custom-md-pdf.height": {
-          "type": "string",
-          "default": "",
-          "description": "pdf only. Paper height, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the custom-md-pdf.format option.",
-          "scope": "resource"
-        },
-        "custom-md-pdf.margin.top": {
-          "type": "string",
-          "default": "1.5cm",
-          "description": "Page Option. Border Top. units: mm, cm, in, px",
-          "scope": "resource"
-        },
-        "custom-md-pdf.margin.bottom": {
-          "type": "string",
-          "default": "1cm",
-          "description": "Page Option. Border bottom. units: mm, cm, in, px",
-          "scope": "resource"
-        },
-        "custom-md-pdf.margin.right": {
-          "type": "string",
-          "default": "1cm",
-          "description": "Page Option. Border right. units: mm, cm, in, px",
-          "scope": "resource"
-        },
-        "custom-md-pdf.margin.left": {
-          "type": "string",
-          "default": "1cm",
-          "description": "Page Option. Border left. units: mm, cm, in, px",
-          "scope": "resource"
-        },
-        "custom-md-pdf.quality": {
-          "type": "number",
-          "default": 100,
-          "description": "jpeg only. The quality of the image, between 0-100. Not applicable to png images."
-        },
-        "custom-md-pdf.clip.x": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "png and jpeg only. x-coordinate of top-left corner of clip area."
-        },
-        "custom-md-pdf.clip.y": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "png and jpeg only. y-coordinate of top-left corner of clip area."
-        },
-        "custom-md-pdf.clip.width": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "png and jpeg only. width of clipping area."
-        },
-        "custom-md-pdf.clip.height": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "png and jpeg only. height of clipping area."
-        },
-        "custom-md-pdf.omitBackground": {
-          "type": "boolean",
-          "default": false,
-          "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
         },
         "custom-md-pdf.StatusbarMessageTimeout": {
           "type": "number",

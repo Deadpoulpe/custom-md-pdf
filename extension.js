@@ -109,33 +109,9 @@ function markdownPdfOnSave() {
     if (mode != 'markdown') {
       return;
     }
-    if (!isMarkdownPdfOnSaveExclude()) {
-      markdownPdf('settings');
-    }
+    markdownPdf("settings");
   } catch (error) {
     showErrorMessage('markdownPdfOnSave()', error);
-  }
-}
-
-function isMarkdownPdfOnSaveExclude() {
-  try{
-    var editor = vscode.window.activeTextEditor;
-    var filename = path.basename(editor.document.fileName);
-    var patterns = vscode.workspace.getConfiguration('custom-md-pdf')['convertOnSaveExclude'] || '';
-    var pattern;
-    var i;
-    if (patterns && Array.isArray(patterns) && patterns.length > 0) {
-      for (i = 0; i < patterns.length; i++) {
-        pattern = patterns[i];
-        var re = new RegExp(pattern);
-        if (re.test(filename)) {
-          return true;
-        }
-      }
-    }
-    return false;
-  } catch (error) {
-    showErrorMessage('isMarkdownPdfOnSaveExclude()', error);
   }
 }
 
@@ -358,7 +334,7 @@ function exportPdf(data, filename, type, uri) {
 
   return vscode.window.withProgress({
     location: vscode.ProgressLocation.Notification,
-    title: '[Markdown PDF - PERSO]: Exporting (' + type + ') ...'
+    title: '[Custom MD PDF - PERSO]: Exporting (' + type + ') ...'
     }, async () => {
       try {
         // export html
@@ -374,7 +350,7 @@ function exportPdf(data, filename, type, uri) {
         var tmpfilename = path.join(f.dir, f.name + '_tmp.html');
         exportHtml(data, tmpfilename);
         var options = {
-          executablePath: vscode.workspace.getConfiguration('custom-md-pdf')['executablePath'] || puppeteer.executablePath(),
+          executablePath: puppeteer.executablePath(),
           args: ['--lang='+vscode.env.language, '--no-sandbox', '--disable-setuid-sandbox']
           // Setting Up Chrome Linux Sandbox
           // https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
@@ -385,20 +361,6 @@ function exportPdf(data, filename, type, uri) {
         // generate pdf
         // https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions
         if (type == 'pdf') {
-          // If width or height option is set, it overrides the format option.
-          // In order to set the default value of page size to A4, we changed it from the specification of puppeteer.
-          var width_option = vscode.workspace.getConfiguration('custom-md-pdf', uri)['width'] || '';
-          var height_option = vscode.workspace.getConfiguration('custom-md-pdf', uri)['height'] || '';
-          var format_option = '';
-          if (!width_option && !height_option) {
-            format_option = vscode.workspace.getConfiguration('custom-md-pdf', uri)['format'] || 'A4';
-          }
-          var landscape_option;
-          if (vscode.workspace.getConfiguration('custom-md-pdf', uri)['orientation'] == 'landscape') {
-            landscape_option = true;
-          } else {
-            landscape_option = false;
-          }
           var options = {
             path: exportFilename,
             scale: vscode.workspace.getConfiguration('custom-md-pdf', uri)['scale'],
@@ -406,16 +368,16 @@ function exportPdf(data, filename, type, uri) {
             headerTemplate: vscode.workspace.getConfiguration('custom-md-pdf', uri)['headerTemplate'] || '',
             footerTemplate: vscode.workspace.getConfiguration('custom-md-pdf', uri)['footerTemplate'] || '',
             printBackground: vscode.workspace.getConfiguration('custom-md-pdf', uri)['printBackground'],
-            landscape: landscape_option,
-            pageRanges: vscode.workspace.getConfiguration('custom-md-pdf', uri)['pageRanges'] || '',
-            format: format_option,
-            width: vscode.workspace.getConfiguration('custom-md-pdf', uri)['width'] || '',
-            height: vscode.workspace.getConfiguration('custom-md-pdf', uri)['height'] || '',
+            landscape: false,
+            pageRanges: '',
+            format: 'A4',
+            width: '',
+            height: '',
             margin: {
-              top: vscode.workspace.getConfiguration('custom-md-pdf', uri)['margin']['top'] || '',
-              right: vscode.workspace.getConfiguration('custom-md-pdf', uri)['margin']['right'] || '',
-              bottom: vscode.workspace.getConfiguration('custom-md-pdf', uri)['margin']['bottom'] || '',
-              left: vscode.workspace.getConfiguration('custom-md-pdf', uri)['margin']['left'] || ''
+              top: '1cm',
+              right: '1.3cm',
+              bottom: '2cm',
+              left: '1.3cm'
             }
           }
           await page.pdf(options);
@@ -700,7 +662,7 @@ function fixHref(resource, href) {
 function checkPuppeteerBinary() {
   try {
     // settings.json
-    var executablePath = vscode.workspace.getConfiguration('custom-md-pdf')['executablePath'] || ''
+    var executablePath = ''
     if (isExistsPath(executablePath)) {
       INSTALL_CHECK = true;
       return true;
@@ -725,7 +687,7 @@ function checkPuppeteerBinary() {
  */
 function installChromium() {
   try {
-    vscode.window.showInformationMessage('[Markdown PDF - PERSO] Installing Chromium ...');
+    vscode.window.showInformationMessage('[Custom MD PDF - PERSO] Installing Chromium ...');
     var statusbarmessage = vscode.window.setStatusBarMessage('$(markdown) Installing Chromium ...');
 
     // proxy setting
@@ -753,7 +715,7 @@ function installChromium() {
         INSTALL_CHECK = true;
         statusbarmessage.dispose();
         vscode.window.setStatusBarMessage('$(markdown) Chromium installation succeeded!', StatusbarMessageTimeout);
-        vscode.window.showInformationMessage('[Markdown PDF - PERSO] Chromium installation succeeded.');
+        vscode.window.showInformationMessage('[Custom MD PDF - PERSO] Chromium installation succeeded.');
         return Promise.all(cleanupOldVersions);
       }
     }

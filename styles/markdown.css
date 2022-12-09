@@ -12,6 +12,11 @@ body {
 	word-wrap: break-word;
 }
 
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
 #code-csp-warning {
 	position: fixed;
 	top: 0;
